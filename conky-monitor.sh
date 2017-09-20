@@ -16,6 +16,8 @@ Y=0
 PRIMARY_X=0
 GAP_X=15
 GAP_Y=5
+offset_y=0 # use to offset vertically due to monitor positioning and sizing
+offset_x=0 # use to offset horizontally due to monitor positioning and sizing
 
 while true; do
   _SCREENS=$( xrandr --listactivemonitors | grep Monitors | awk -F'[ ]' '{ print $2 }' )
@@ -32,8 +34,8 @@ while true; do
         CONFIG=$SECONDARY_CONFIG_FILE
       fi
       read -r X Y <<<$( echo $MONITOR | awk -F+ '{ print $2, $3 }' )
-      echo "conky -x $(($GAP_X+$X)) -y $(($GAP_Y+$Y-1080)) -c $CONFIG"
-      conky -x $(($GAP_X+$X)) -y $(($GAP_Y+$Y-1080)) -c $CONFIG &
+      echo "conky -x $(($GAP_X+$X+$offset_x)) -y $(($GAP_Y+$Y+$offset_y)) -c $CONFIG"
+      conky -x $(($GAP_X+$X+$offset_x)) -y $(($GAP_Y+$Y+$offset_y)) -c $CONFIG &
     done
   fi
   sleep 10;
