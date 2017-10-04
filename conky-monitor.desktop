@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=conkyMonitor
+GenericName=start the conky monitor script
+Comment=launches a conky instance on each display
+Exec=/home/nbaker/bin/conky-monitor.sh &
+Terminal=false
+Type=Application
+X-GNOME-Autostart-enabled=true
