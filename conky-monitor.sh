@@ -29,6 +29,11 @@ while true; do
     killconky
     for MONITOR in `xrandr --listactivemonitors | grep -v Monitors | awk -F'[ ]' '{ print $3"_"$4 }' | sed 's/+//'`; do
       if [[ "$MONITOR" == *"*"* ]]; then
+      
+    # for wayland
+    #for MONITOR in `xrandr --listactivemonitors | grep -v Monitors | awk -F'[ ]' '{ print $3"_"$4 }'`; do
+    #  if [[ "$MONITOR" == 0* ]]; then
+
         CONFIG=$PRIMARY_CONFIG_FILE
       else
         CONFIG=$SECONDARY_CONFIG_FILE
